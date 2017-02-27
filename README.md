@@ -26,9 +26,11 @@
 -Credit to napalm, _FIL73R_.
 
 -System process : 
+
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/systemprocess.PNG)
 
 -BSOD (if user try to end process) :
+
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/bosd.PNG)
 
 
