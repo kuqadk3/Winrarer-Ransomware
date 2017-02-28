@@ -12,6 +12,7 @@
 - Reboot system
 - Move all archived file to desktop
 - Create list of archived file
+- Added drop to temp folder
 
 
 #TODO : 
