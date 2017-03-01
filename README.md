@@ -13,7 +13,7 @@
 - Move all archived file to desktop
 - Create list of archived file
 - Added drop to temp folder
-
+- Added anti vmware + anti virtualbox
 
 #TODO : 
 - I will quickly add Server files where the ransomware can send the key back to Server.But now it havent save key to anywhere.So that becareful when test it
@@ -34,6 +34,9 @@
 
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/bosd.PNG)
 
+#Disclaimer :
+- This only for educational purpose
 
 #Feeling : 
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/bloody_work.gif)
+
