@@ -1,11 +1,11 @@
-﻿Build started 2/28/2017 5:47:58 PM.
+﻿Build started 3/1/2017 1:50:03 PM.
      1>Project "C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up\WinrarRansomware\WinrarRansomware.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\WinrarRansomware.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>main.cpp(106): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>main.cpp(170): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up\Release\WinrarRansomware.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\WinrarRansomware.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up\Release\WinrarRansomware.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"main" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up\Release\WinrarRansomware.lib" /MACHINE:X86 Release\main.obj
          Generating code
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.36
+Time Elapsed 00:00:02.02
