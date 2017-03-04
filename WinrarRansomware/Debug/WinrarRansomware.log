@@ -1,31 +1,22 @@
-﻿Build started 2/26/2017 5:44:59 PM.
-     1>Project "C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\WinrarRansomware\WinrarRansomware.vcxproj" on node 2 (build target(s)).
+﻿Build started 3/5/2017 2:40:20 AM.
+     1>Project "C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\WinrarRansomware\WinrarRansomware.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\WinrarRansomware.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(46): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(47): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(48): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(65): warning C4305: 'argument' : truncation from '__int64' to 'DWORD'
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(65): warning C4309: 'argument' : truncation of constant value
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(94): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware\winrarransomware\main.cpp(95): warning C4101: 'ascii' : unreferenced local variable
+     1>c:\users\tuan linh\documents\visual studio 2010\projects\winrarransomware - back up - copy\winrarransomware\main.cpp(220): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\WinrarRansomware.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.lib" /MACHINE:X86 Debug\main.obj
-         LINK : C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.exe not found or not built by the last incremental link; performing full link
-         WinrarRansomware.vcxproj -> C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.exe
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\WinrarRansomware.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.lib" /MACHINE:X86 Debug\main.obj
+         LINK : C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.exe not found or not built by the last incremental link; performing full link
+         WinrarRansomware.vcxproj -> C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\Debug\WinrarRansomware.exe;#1" /manifest Debug\WinrarRansomware.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\Debug\WinrarRansomware.exe;#1" /manifest Debug\WinrarRansomware.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Debug\WinrarRansomware.unsuccessfulbuild".
          Touching "Debug\WinrarRansomware.lastbuildstate".
-     1>Done Building Project "C:\Users\Tuan Linh\documents\visual studio 2010\Projects\WinrarRansomware\WinrarRansomware\WinrarRansomware.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\Tuan Linh\Documents\Visual Studio 2010\Projects\WinrarRansomware - back up - Copy\WinrarRansomware\WinrarRansomware.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.79
+Time Elapsed 00:00:02.22
