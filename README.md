@@ -20,6 +20,9 @@
 - It will work with 7z
 - It will work with Winzip
 
+#Server :
+- Added Server to receive key
+![alt tag](https://media.giphy.com/media/Q3hcowiaakxC8/giphy.gif)
 
 #Critical Process :
 -Prevent user from ending process by taskmanager
