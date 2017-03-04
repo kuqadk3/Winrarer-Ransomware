@@ -23,7 +23,7 @@
 #Server :
 - Added Server to receive key
 
-![alt tag](https://media.giphy.com/media/Q3hcowiaakxC8/giphy.gif)
+![alt tag](https://github.com/kuqadk3/Winrarer-Ransomware/blob/master/img/server.gif)
 
 #Critical Process :
 -Prevent user from ending process by taskmanager
