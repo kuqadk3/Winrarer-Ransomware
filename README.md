@@ -26,6 +26,7 @@
 ![alt tag](https://github.com/kuqadk3/Winrarer-Ransomware/blob/master/img/server.gif)
 
 #Critical Process :
+
 -Prevent user from ending process by taskmanager
 -It will make process (run as administrator privilliges) become system process (examples : winlogon.exe) and cause bsod if user try end process by task manager
 -Credit to napalm, _FIL73R_.
@@ -40,7 +41,9 @@
 
 #Disclaimer :
 - This only for educational purpose
-
+#Credit : 
+- To me of course
+- Anyone who want join this project,can code,it is fully opensource to everybody
 #Feeling : 
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/bloody_work.gif)
 
