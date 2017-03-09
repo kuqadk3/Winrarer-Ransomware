@@ -41,9 +41,7 @@
 
 #Disclaimer :
 - This only for educational purpose
-#Credit : 
-- To me of course
-- Anyone who want join this project,can code,it is fully opensource to everybody
+
 #Feeling : 
 ![alt tag](https://github.com/kuqadk3/WinrarRansomware/blob/master/img/bloody_work.gif)
 
