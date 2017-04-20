@@ -28,8 +28,8 @@
 #Critical Process :
 
 -Prevent user from ending process by taskmanager
+
 -It will make process (run as administrator privilliges) become system process (examples : winlogon.exe) and cause bsod if user try end process by task manager
--Credit to napalm, _FIL73R_.
 
 -System process : 
 
